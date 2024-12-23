@@ -73,7 +73,7 @@ exports.getTemplateCount = async (req, res) => {
 exports.sendTemplateCount = async (req, res) => {
   try {
     const { count } = req.body;
-    res.status(200).json({ message: 'Scan logged successfully', newScanLog });
+    res.status(200).json({ message: 'successfully', newCount});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
