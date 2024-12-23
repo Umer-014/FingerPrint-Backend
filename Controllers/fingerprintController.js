@@ -17,14 +17,6 @@ exports.enrollFingerprint = async (req, res) => {
     const newFingerprint = new Fingerprint({ fingerId, timestamp });
     await newFingerprint.save();
 
-    // Update the template count
-    let templateCount = await TemplateCount.findOne();
-    if (!templateCount) {
-      templateCount = new TemplateCount({ count: 0 });
-    }
-    templateCount.count += 1;
-    await templateCount.save();
-
     res.status(201).json({ message: 'Fingerprint enrolled successfully', newFingerprint });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -71,6 +63,17 @@ exports.getTemplateCount = async (req, res) => {
   try {
     const templateCount = await TemplateCount.findOne();
     res.status(200).json({ count: templateCount ? templateCount.count : 0 });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+// Send the Templates Count
+exports.sendTemplateCount = async (req, res) => {
+  try {
+    const { count } = req.body;
+    res.status(200).json({ message: 'Scan logged successfully', newScanLog });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

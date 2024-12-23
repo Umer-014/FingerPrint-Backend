@@ -10,7 +10,8 @@ router.get('/enroll', fingerprintController.fetchEnrolledFingerprints);
 router.post('/scan', fingerprintController.scanFingerprint);
 router.get('/scan', fingerprintController.fetchScanLogs);
 
-// Get Template Count
+// Template Count
+router.post('/count', fingerprintController.sendTemplateCount);
 router.get('/count', fingerprintController.getTemplateCount);
 
 module.exports = router;
