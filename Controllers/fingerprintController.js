@@ -74,7 +74,10 @@ exports.sendTemplateCount = async (req, res) => {
   try {
     const { count } = req.body;
 
-    // Log the count in the database
+    // Delete the previous count entry
+    await TemplateCount.deleteMany({});  // This deletes all entries in the collection
+
+    // Create a new count entry
     const newCount = new TemplateCount({ count });
     await newCount.save();
 
