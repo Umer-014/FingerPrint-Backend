@@ -74,11 +74,11 @@ exports.sendTemplateCount = async (req, res) => {
   try {
     const { count } = req.body;
 
-     // Log the scan
-     const newCount = new count({ count});
-     await newCount.save();
- 
-    res.status(200).json({ message: 'successfully', newCount});
+    // Log the count in the database
+    const newCount = new TemplateCount({ count });
+    await newCount.save();
+
+    res.status(200).json({ message: 'Successfully logged the count', newCount });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

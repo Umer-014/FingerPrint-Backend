@@ -11,7 +11,8 @@ router.post('/scan', fingerprintController.scanFingerprint);
 router.get('/scan', fingerprintController.fetchScanLogs);
 
 // Template Count
-router.post('/count', fingerprintController.sendTemplateCount);
+router.post('/count', fingerprintController.sendTemplateCount);  // Ensure it's correctly hooked up to your controller
+
 router.get('/count', fingerprintController.getTemplateCount);
 
 module.exports = router;
